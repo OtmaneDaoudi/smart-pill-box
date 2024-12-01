@@ -1,15 +1,26 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'styles/style.css' %}">
     <title>Login</title>
 </head>
 <body>
-    <form method="POST" action="{% url 'authentication:login' %}">
-        {% csrf_token %}
-        {{ form }}
-        <button>Login</button>
-    </form>
+    <div class="container">
+        <h1>Login</h1>
+        {% if error %}
+            <p>What a ... check yo gaddamn creds</p>
+        {% endif %}
+        <form method="POST" action="{% url 'authentication:login' %}">
+            {% csrf_token %}
+            <input type="text" placeholder="Username" name="username" required><br>
+            <input type="password" placeholder="Password" name="password" required><br>
+            <button>Login</button>
+        </form>
+        <a href="">Forgot your password?</a>
+    </div>
 </body>
 </html>

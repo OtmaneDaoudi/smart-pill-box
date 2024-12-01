@@ -1,6 +1,6 @@
 from django.shortcuts import render, HttpResponse, redirect
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
-from django.contrib.auth import login, logout
+from django.contrib.auth import login, authenticate
 
 
 # Create your views here.
@@ -9,13 +9,14 @@ def login_view(request):
     if request.user.username == "admin":
         return redirect("/admin")
     
-    form = None
     if request.method == "POST":
-        form = AuthenticationForm(data = request.POST)
-        if form.is_valid():
-            user = form.get_user()
+        username = request.POST["username"]
+        password = request.POST["password"]
+        user = authenticate(username=username, password=password)
+        if user:
             login(request, user)
-            user_type = "doctor" if user.rolebaseduser.isDoctor else "patient"
-            return HttpResponse(user_type)
-    else: form = AuthenticationForm()
-    return render(request, "login.html", {"form": form})
+            destination = "doctor/" if user.rolebaseduser.isDoctor else "patient/"
+            # return redirect(destination)
+            return HttpResponse(f"{destination}")
+        return render(request, "login.html", {"error": True})
+    return render(request, "login.html")
