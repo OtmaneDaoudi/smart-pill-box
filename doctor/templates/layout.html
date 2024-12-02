@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        {% block title %}{% endblock title %}
+    </title>
+    <link rel="stylesheet" href="{% static 'doctor/styles/style.css' %}">
+    <script src="https://cdn.jsdelivr.net/npm/gridjs/dist/gridjs.umd.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/gridjs/dist/theme/mermaid.min.css" rel="stylesheet" />
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="logo">SmartPB</div>
+      <ul class="nav-links">
+        <li><a href="{% url 'doctors:patients'%}" {% if active == "patients" %}class="active"{% endif %}>
+          Patients</a></li>
+          <li><a href="" {% if active == "medications" %}class="active"{% endif %}>Medications</a></li>
+          <li><a href="" {% if active == "patients" %}class="tracking"{% endif %}>Tracking</a></li>
+          <li><a href="{% url 'authentication:logout'%}" id="logout">Logout</a></li>
+        </ul>
+      </nav>
+      
+    <script src="{% static 'doctor/scripts/script.js' %}"></script>
+    {% block content %}{% endblock content %}
+</body>
+</html>

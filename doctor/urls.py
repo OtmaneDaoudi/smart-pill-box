@@ -1,7 +1,8 @@
-from django.contrib import admin
-from django.urls import path, include
+from django.urls import path
 from .views import get_patients
 
+app_name = "doctors"
+
 urlpatterns = [
-    path('patients/', get_patients)
+    path('patients/', get_patients, name="patients")
 ]

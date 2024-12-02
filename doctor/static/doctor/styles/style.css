@@ -1,0 +1,74 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: lightgray;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: black;
+  padding: 10px 20px;
+}
+
+.logo {
+  color: #fff;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+}
+
+.nav-links li {
+  margin: 0 10px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #fff;
+  padding: 5px 10px;
+  transition: background 0.3s;
+}
+
+.nav-links a:hover {
+  background-color: #575757;
+  border-radius: 5px;
+} 
+
+.active {
+  background-color: #575757;
+  border-radius: 5px;
+}
+#logout {
+  border: white solid 2px;
+  border-radius: 10px;
+}
+
+#add-patient
+{
+  background-color: lime;
+  width: 40%;
+  margin-left: calc((100% - 40%)/2);
+  margin-top: 20px;
+  margin-bottom: 20px;
+  height: 50px;
+  border-radius: 20px;
+  font-size: 100%;
+}
+
+#add-patient-modal{
+  background-color: red;
+}
+
+.delete {
+  background-color: red;
+}

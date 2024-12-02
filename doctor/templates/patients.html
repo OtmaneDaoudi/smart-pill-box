@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+
+{% block title %}
+  Patients
+{% endblock title %}
+
+{% block content %}
+  <button id="add-patient">Add new patient</button>
+  <div id="wrapper"></div>
+  <script>
+    renderTable(JSON.parse( "{{ table_data | escapejs}}" ))
+  </script>
+{% endblock content %}
