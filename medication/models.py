@@ -29,7 +29,9 @@ class Prescription(models.Model):
         return f"{self.patient} {self.period}"
 
 class Intake(models.Model):
-    patient = models.ForeignKey(RoleBasedUser, on_delete=models.CASCADE)
-    medication = models.ForeignKey(Medication, on_delete=models.CASCADE)
+    prescription = models.ForeignKey(Prescription, on_delete=models.CASCADE, default=-1)
     date = models.DateField(auto_now_add=True)
-    period = models.CharField(choices=Prescription.PERIOD_CHOICES, max_length=1)
+    period = models.CharField(choices=Prescription.PERIOD_CHOICES, max_length=1, default='M') # at which the medication was actually taken0
+
+    def __str__(self):
+        return f"{self.date} {self.period}"

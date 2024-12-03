@@ -1,9 +1,8 @@
 from django.shortcuts import render, HttpResponse
 from authentication.utils import protect_route, UserType, redirect
-from .models import Medication, Prescription
-from django.contrib.auth.models import User
+from .models import Medication, Prescription, Intake
 from authentication.models import RoleBasedUser
-import json
+import json, datetime
 
 def serialize_medication(medication: Medication):
     if not medication: return {}
@@ -77,3 +76,22 @@ def delete_prescription(request):
     patient_id = request.POST["patient_id"]
     Prescription.objects.get(id=prescription_id).delete()
     return redirect(f"/medication/prescription/{patient_id}")
+
+
+def daily_intake(request):
+    prescription_id = request.POST["prescription_id"]
+
+    now = datetime.datetime.now()
+    period = None
+    if 6 <= now.hour <= 12: period = "M"
+    elif 12 < now.hour <= 18: period = "A"
+    else: period = "E"
+    
+    newIntake = Intake(
+        prescription=Prescription.objects.get(id=prescription_id),
+        date = datetime.date.today(),
+        period = period
+    )
+    newIntake.save()
+
+    return redirect("patients:todo")

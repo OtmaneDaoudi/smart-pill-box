@@ -15,13 +15,17 @@
     <nav class="navbar">
       <div class="logo">SmartPB</div>
       <ul class="nav-links">
-        <li><a href="{% url 'doctors:patients'%}" {% if active == "patients" %}class="active"{% endif %}>
-          Patients</a></li>
+        {% if user.rolebaseduser.isDoctor %}
+          <li><a href="{% url 'doctors:patients'%}" {% if active == "patients" %}class="active"{% endif %}>Patients</a></li>
           <li><a href="{% url 'medications:meds'%}" {% if active == "medications" %}class="active"{% endif %}>Medications</a></li>
           <li><a href="" {% if active == "prescription" %}class="active"{% endif %}>Prescription</a></li>
           <li><a href="" {% if active == "history" %}class="active"{% endif %}>History</a></li>
-          <li><a href="{% url 'authentication:logout'%}" id="logout">Logout</a></li>
-        </ul>
+        {% else %}
+          <li><a href="" {% if active == "prescription" %}class="active"{% endif %}>Prescription</a></li>
+          <li><a href="" {% if active == "tracking" %}class="active"{% endif %}>Tracking</a></li>
+        {% endif %}
+        <li><a href="{% url 'authentication:logout'%}" id="logout">Logout</a></li>
+       </ul>
       </nav>
       
     {% block content %}{% endblock content %}

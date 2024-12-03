@@ -1,0 +1,155 @@
+{% extends "layout.html" %}
+{% load static %}
+
+{% block title %}
+  Prescription
+{% endblock title %}
+
+{% block content %}
+<div class="period-container" id="morning">
+    <h2>Morning</h2>
+    <div class="upnext tasks-container period-container" style="width: 90%;">
+      <h3>Up next</h3>
+      {% for prescription in morning_to_do_prescriptions  %}
+            <div class="task">
+                <p class="medication">{{ prescription.medication }}</p>
+                <p>
+                    <span class="duration">
+                      {{ prescription.takenFor }}/{{ prescription.duration }} days
+                    </span>
+                </p>
+                <p>
+                    {% if  prescription.isAfterFood %}
+                        <span class="foodperiod-after">After food</span>
+                    {% else %}
+                    <span class="foodperiod-before">Before food</span>
+                    {% endif %}
+                </p>
+                <form action="{% url "medications:daily_intake" %}" method="POST">
+                  {% csrf_token %}
+                  <input type="text" name="prescription_id" value="{{ prescription.id }}" class="hidden">
+                  <button class="action done">Done &#10003;</button>
+                </form>
+            </div>
+        {% endfor %}
+    </div>
+    <div class="done-tasks tasks-container period-container" style="width: 90%;">
+      <h3>Done</h3>
+      {% for intake in morning_done_intake %}
+        <div class="task done-task">
+            <p class="medication">{{ intake.medication }}</p>
+            <p>
+                <span class="duration">
+                  {{ intake.takenFor }}/{{ intake.duration }} days
+                </span>
+            </p>
+            <p>
+                {% if  intake.isAfterFood %}
+                  <span class="foodperiod-after">After food</span>
+                {% else %}
+                  <span class="foodperiod-before">Before food</span>
+                {% endif %}
+            </p>
+        </div>  
+      {% endfor %}
+    </div>
+</div>
+
+<div class="period-container" id="afternoon">
+  <h2>Afternoon</h2>
+  <div class="upnext tasks-container period-container" style="width: 90%;">
+    <h3>Up next</h3>
+    {% for prescription in afternoon_to_do_prescriptions  %}
+      <div class="task">
+          <p class="medication">{{ prescription.medication }}</p>
+          <p>
+              <span class="duration">
+                {{ prescription.takenFor }}/{{ prescription.duration }} days
+              </span>
+          </p>
+          <p>
+              {% if  prescription.isAfterFood %}
+                  <span class="foodperiod-after">After food</span>
+              {% else %}
+              <span class="foodperiod-before">Before food</span>
+              {% endif %}
+          </p>
+          <form action="{% url "medications:daily_intake" %}" method="POST">
+            {% csrf_token %}
+            <input type="text" name="prescription_id" value="{{ prescription.id }}" class="hidden">
+            <button class="action done">Done &#10003;</button>
+          </form>
+      </div>
+      {% endfor %}
+  </div>
+  <div class="done-tasks tasks-container period-container" style="width: 90%;">
+    <h3>Done</h3>
+    {% for intake in afternoon_done_intake %}
+      <div class="task done-task">
+          <p class="medication">{{ intake.medication }}</p>
+          <p>
+              <span class="duration">
+                {{ intake.takenFor }}/{{ intake.duration }} days
+              </span>
+          </p>
+          <p>
+              {% if  intake.isAfterFood %}
+                <span class="foodperiod-after">After food</span>
+              {% else %}
+                <span class="foodperiod-before">Before food</span>
+              {% endif %}
+          </p>
+      </div>  
+    {% endfor %}
+  </div>
+</div>
+
+<div class="period-container" id="evening">
+  <h2>Evening</h2>
+  <div class="upnext tasks-container period-container" style="width: 90%;">
+    <h3>Up next</h3>
+    {% for prescription in evening_to_do_prescriptions  %}
+      <div class="task">
+          <p class="medication">{{ prescription.medication }}</p>
+          <p>
+              <span class="duration">
+                {{ prescription.takenFor }}/{{ prescription.duration }} days
+              </span>
+          </p>
+          <p>
+              {% if  prescription.isAfterFood %}
+                  <span class="foodperiod-after">After food</span>
+              {% else %}
+              <span class="foodperiod-before">Before food</span>
+              {% endif %}
+          </p>
+          <form action="{% url "medications:daily_intake" %}" method="POST">
+            {% csrf_token %}
+            <input type="text" name="prescription_id" value="{{ prescription.id }}" class="hidden">
+            <button class="action done">Done &#10003;</button>
+          </form>
+      </div>
+      {% endfor %}
+  </div>
+  <div class="done-tasks tasks-container period-container" style="width: 90%;">
+    <h3>Done</h3>
+    {% for intake in evening_done_intake %}
+      <div class="task done-task">
+          <p class="medication">{{ intake.medication }}</p>
+          <p>
+              <span class="duration">
+                {{ intake.takenFor }}/{{ intake.duration }} days
+              </span>
+          </p>
+          <p>
+              {% if  intake.isAfterFood %}
+                <span class="foodperiod-after">After food</span>
+              {% else %}
+                <span class="foodperiod-before">Before food</span>
+              {% endif %}
+          </p>
+      </div>  
+    {% endfor %}
+  </div>
+</div>
+{% endblock content %}

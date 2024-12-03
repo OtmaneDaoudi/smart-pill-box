@@ -15,7 +15,7 @@ def login_view(request):
         user = authenticate(username=username, password=password)
         if user:
             login(request, user)
-            destination = "doctors:patients" if user.rolebaseduser.isDoctor else "patient/"
+            destination = "doctors:patients" if user.rolebaseduser.isDoctor else "patients:todo"
             return redirect(destination)
         return render(request, "login.html", {"error": True})
     return render(request, "login.html")

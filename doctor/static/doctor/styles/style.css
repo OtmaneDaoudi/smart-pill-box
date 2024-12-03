@@ -119,9 +119,9 @@ textarea {
 .period-container
 {
   width: 65%;
-  min-height: 100px;
+  min-height: 50px;
   margin: auto;
-  margin-top: 20px;
+  margin-top: 10px;
   margin-bottom: 10px;
   border: black dotted 1px;
   border-radius: 10px;
@@ -130,7 +130,7 @@ textarea {
 
 .period-container h2 {
   text-decoration: underline;
-  margin-bottom: 10px;
+  /* margin-bottom: 10px; */
 }
 
 .task {
@@ -182,4 +182,15 @@ textarea {
   padding: 0 10px;
   color: black;
   background-color: yellow;
+}
+
+.done{
+  color: black;
+  background-color: green;
+  border-width: 1px;
+  width: 100px;
+}
+
+.done-task {
+  opacity: 50%;
 }
