@@ -7,7 +7,7 @@ import json
 def serialize_user(user: RoleBasedUser) -> dict:
     if not user: return {}
     return [
-        user.user.id,
+        user.user.rolebaseduser.id,
         user.user.first_name,
         user.user.last_name,
         user.user.email

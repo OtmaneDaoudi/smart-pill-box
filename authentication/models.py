@@ -7,5 +7,4 @@ class RoleBasedUser(models.Model):
     isDoctor = models.BooleanField(default=False)
 
     def __str__(self):
-        return self.user.username
-    
+        return f"{self.id} {self.isDoctor} {self.user.username}"

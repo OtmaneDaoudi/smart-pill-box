@@ -1,0 +1,80 @@
+{% extends "layout.html" %}
+{% load static %}
+
+{% block title %}
+Prescriptions
+{% endblock title %}
+
+{% block content %}
+
+
+<button class="addBtn">Assign medication</button>
+<div class="add-new hidden" id="targetForm">
+    <form action="{% url "medications:update_prescription" %}" method="POST">
+        {% csrf_token %}
+        <input type="text" name="patient_id" value="{{ patient_id }}" style="display: none;">
+        <table border="1">
+            <tr>
+                <td><label for="name">Medication:</label></td>
+                <td>
+                    <select name="medication" id="medication">
+                        {% for med in medications %}
+                        <option value="{{ med.id }}">{{ med.name }}</option>
+                        {% endfor %}
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td><label for="period">Period</label></td>
+                <td>
+                    <select name="period" id="period">
+                        <option value="M">Morning</option>
+                        <option value="A">Afternoon</option>
+                        <option value="E">Evening</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td><label for="period">Taken after food?</label></td>
+                <td><input type="checkbox" name="isAfterFood"></td>
+            </tr>
+            <tr>
+                <td><label for="period">Duration (days):</label></td>
+                <td><input type="number" name="duration" required></td>
+            </tr>
+            <tr>
+                <td colspan="2" style="text-align: center;">
+                    <button type="submit">Submit</button>
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
+
+<div class="period-container" id="morning">
+    <h2>Morning</h2>
+    <div class="tasks-container">
+        {% for prescription in marning_tasks %}
+            <p>{{ prescription.medication.name }} {{ prescription.period }}</p>
+        {% endfor %}
+    </div>
+</div>
+<div class="period-container" id="morning">
+    <h2>Afternoon</h2>
+    <div class="tasks-container">
+        {% for prescription in afternoon_tasks %}
+            <p>{{ prescription.medication.name }} {{ prescription.period }}</p>
+        {% endfor %}
+    </div>
+</div>
+<div class="period-container" id="morning">
+    <h2>Evening</h2>
+    <div class="tasks-container">
+        {% for prescription in evening_tasks %}
+            <p>{{ prescription.medication.name }} {{ prescription.period }}</p>
+        {% endfor %}
+    </div>
+</div>
+<script src="{% static "medication/scripts/script.js" %}"></script>
+
+{% endblock content %}

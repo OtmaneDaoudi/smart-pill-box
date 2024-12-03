@@ -17,13 +17,13 @@
       <ul class="nav-links">
         <li><a href="{% url 'doctors:patients'%}" {% if active == "patients" %}class="active"{% endif %}>
           Patients</a></li>
-          <li><a href="" {% if active == "medications" %}class="active"{% endif %}>Medications</a></li>
-          <li><a href="" {% if active == "patients" %}class="tracking"{% endif %}>Tracking</a></li>
+          <li><a href="{% url 'medications:meds'%}" {% if active == "medications" %}class="active"{% endif %}>Medications</a></li>
+          <li><a href="" {% if active == "prescription" %}class="active"{% endif %}>Prescription</a></li>
+          <li><a href="" {% if active == "history" %}class="active"{% endif %}>History</a></li>
           <li><a href="{% url 'authentication:logout'%}" id="logout">Logout</a></li>
         </ul>
       </nav>
       
-    <script src="{% static 'doctor/scripts/script.js' %}"></script>
     {% block content %}{% endblock content %}
 </body>
 </html>

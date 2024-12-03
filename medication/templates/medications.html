@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+{% load static %}
+
+{% block title %}
+  Medications
+{% endblock title %}
+
+{% block content %}
+  <button class="addBtn">Add new medication</button>
+  <div class="add-new hidden" id="targetForm">
+    <form action="{% url "medications:add_new" %}" method="POST">
+        {% csrf_token %}
+        <table border="1">
+            <tr>
+                <td><label for="name">Name:</label></td>
+                <td><input type="text" id="name" name="name" required></td>
+            </tr>
+            <tr>
+                <td><label for="instructions">Instructions:</label></td>
+                <td><textarea id="instruction" name="instructions" rows="5" required></textarea></td>
+            </tr>
+            <tr>
+                <td colspan="2" style="text-align: center;">
+                    <button type="submit">Submit</button>
+                </td>
+            </tr>
+        </table>
+    </form>
+  </div>
+  <div id="wrapper"></div>
+  <script src="{% static "medication/scripts/script.js" %}"></script>
+  <script>
+    renderTable(JSON.parse( "{{ table_data | escapejs}}" ))
+  </script>
+{% endblock content %}
