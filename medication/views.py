@@ -57,7 +57,8 @@ def update_prescription(request):
     period = request.POST["period"]
     isAfterFood = True if request.POST.get("isAfterFood", "off") == "on" else False
     patient_id = request.POST.get("patient_id", None)
-    doctor_id = request.user.id
+    doctor_id = request.user.rolebaseduser.id
+    print(f"doctor_id", {doctor_id})
     duration = request.POST["duration"]
     # Persist new prescription
     Prescription(
@@ -69,4 +70,10 @@ def update_prescription(request):
         duration=duration
     ).save()
 
+    return redirect(f"/medication/prescription/{patient_id}")
+
+def delete_prescription(request):
+    prescription_id = request.POST["prescription_id"]
+    patient_id = request.POST["patient_id"]
+    Prescription.objects.get(id=prescription_id).delete()
     return redirect(f"/medication/prescription/{patient_id}")

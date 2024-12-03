@@ -26,7 +26,7 @@ class Prescription(models.Model):
     patient = models.ForeignKey(RoleBasedUser, on_delete=models.CASCADE, related_name="target")
 
     def __str__(self):
-        return f"{patie}"
+        return f"{self.patient} {self.period}"
 
 class Intake(models.Model):
     patient = models.ForeignKey(RoleBasedUser, on_delete=models.CASCADE)

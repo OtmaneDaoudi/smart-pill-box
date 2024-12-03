@@ -54,8 +54,28 @@ Prescriptions
 <div class="period-container" id="morning">
     <h2>Morning</h2>
     <div class="tasks-container">
-        {% for prescription in marning_tasks %}
-            <p>{{ prescription.medication.name }} {{ prescription.period }}</p>
+        {% for prescription in morning_tasks %}
+            <div class="task">
+                <p class="medication">{{ prescription.medication.name }}</p>
+                <p>
+                    <span class="duration">
+                        {{ prescription.duration }} days
+                    </span>
+                </p>
+                <p>
+                    {% if  prescription.isAfterFood %}
+                        <span class="foodperiod-after">After food</span>
+                    {% else %}
+                    <span class="foodperiod-before">Before food</span>
+                    {% endif %}
+                </p>
+                <form action="{% url "medications:delete_prescription" %}" method="POST">
+                    {% csrf_token %}
+                    <input type="text" name="patient_id" value="{{ patient_id }}" class="hidden">
+                    <input type="text" name="prescription_id" value="{{ prescription.id }}" class="hidden">
+                    <button class="action delete">&times;</button>
+                </form>
+            </div>
         {% endfor %}
     </div>
 </div>
@@ -63,7 +83,27 @@ Prescriptions
     <h2>Afternoon</h2>
     <div class="tasks-container">
         {% for prescription in afternoon_tasks %}
-            <p>{{ prescription.medication.name }} {{ prescription.period }}</p>
+            <div class="task">
+                <p class="medication">{{ prescription.medication.name }}</p>
+                <p>
+                    <span class="duration">
+                        {{ prescription.duration }} days
+                    </span>
+                </p>
+                <p>
+                    {% if  prescription.isAfterFood %}
+                        <span class="foodperiod-after">After food</span>
+                    {% else %}
+                    <span class="foodperiod-before">Before food</span>
+                    {% endif %}
+                </p>
+                <form action="{% url "medications:delete_prescription" %}" method="POST">
+                    {% csrf_token %}
+                    <input type="text" name="patient_id" value="{{ patient_id }}" class="hidden">
+                    <input type="text" name="prescription_id" value="{{ prescription.id }}" class="hidden">
+                    <button class="action delete">&times;</button>
+                </form>
+            </div>
         {% endfor %}
     </div>
 </div>
@@ -71,7 +111,27 @@ Prescriptions
     <h2>Evening</h2>
     <div class="tasks-container">
         {% for prescription in evening_tasks %}
-            <p>{{ prescription.medication.name }} {{ prescription.period }}</p>
+            <div class="task">
+                <p class="medication">{{ prescription.medication.name }}</p>
+                <p>
+                    <span class="duration">
+                        {{ prescription.duration }} days
+                    </span>
+                </p>
+                <p>
+                    {% if  prescription.isAfterFood %}
+                        <span class="foodperiod-after">After food</span>
+                    {% else %}
+                    <span class="foodperiod-before">Before food</span>
+                    {% endif %}
+                </p>
+                <form action="{% url "medications:delete_prescription" %}" method="POST">
+                    {% csrf_token %}
+                    <input type="text" name="patient_id" value="{{ patient_id }}" class="hidden">
+                    <input type="text" name="prescription_id" value="{{ prescription.id }}" class="hidden">
+                    <button class="action delete">&times;</button>
+                </form>
+            </div>
         {% endfor %}
     </div>
 </div>

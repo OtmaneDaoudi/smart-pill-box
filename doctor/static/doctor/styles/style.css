@@ -59,7 +59,7 @@ body {
   width: 40%;
   margin-left: calc((100% - 40%)/2);
   margin-top: 20px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   height: 50px;
   border-radius: 20px;
   font-size: 100%;
@@ -118,7 +118,7 @@ textarea {
 
 .period-container
 {
-  width: 90%;
+  width: 65%;
   min-height: 100px;
   margin: auto;
   margin-top: 20px;
@@ -126,4 +126,60 @@ textarea {
   border: black dotted 1px;
   border-radius: 10px;
   text-align: center;
+}
+
+.period-container h2 {
+  text-decoration: underline;
+  margin-bottom: 10px;
+}
+
+.task {
+  background-color: white;
+  height: 30px;
+  margin: 10px 10px;
+  border: black solid 2px;
+  border-radius: 10px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #000;
+}
+
+.task p{ 
+  text-align: center; 
+  width: 100%;
+}
+
+.task button {
+  color: white; 
+  margin-left: 5px;
+  height: 90%;
+}
+
+.medication{
+  font-weight: bold;
+}
+
+.duration {
+  border: black solid 2px;
+  border-radius: 10px;
+  padding: 0 10px;
+}
+
+.foodperiod-after{
+  border: black solid 1px;
+  border-radius: 10px;
+  padding: 0 10px;
+  color: black;
+  background-color: chocolate;
+}
+
+
+.foodperiod-before{
+  border: black solid 1px;
+  border-radius: 10px;
+  padding: 0 10px;
+  color: black;
+  background-color: yellow;
 }
