@@ -6,6 +6,31 @@
 {% endblock title %}
 
 {% block content %}
+<!-- Notification modal overlay -->
+<div class="overlay hidden"></div>
+<div class="modal hidden">
+  <!-- Notification modal -->
+   <div id="notification-content">
+     <p id="notification-content-message">The following medications are soon to be taken:</p>
+     <ul id="notification-medications">
+      <li>test1</li>
+      <li>test2</li>
+     </ul>
+   </div>
+   <div class="options">
+     <div class="reminder">
+       <button id="reminderBtn">Remind me in</button>
+       <select id="timer">
+         <option value="5">5 seconds</option>
+         <option value="10">10 seconds</option>
+         <option value="15">15 seconds</option>
+         <option value="30">30 seconds</option>
+        </select>
+      </div>
+      <button id="dismiss-modal">Dismiss</button>
+    </div>
+</div>
+
 <div class="period-container" id="morning">
     <h2>Morning</h2>
     <div class="upnext tasks-container period-container" style="width: 90%;">
@@ -152,4 +177,5 @@
     {% endfor %}
   </div>
 </div>
+<script src="{% static "patient/scripts/script.js" %}"></script>
 {% endblock content %}
