@@ -21,6 +21,17 @@ def get_medications(request):
     table_data = json.dumps([serialize_medication(med) for med in medications])
     return render(request, "medications.html", {"active": "medications", "table_data": table_data})
 
+def delete_medication(request, medication_id):
+    reponse = protect_route(request, UserType.DOCTOR)
+    if reponse: return reponse
+
+    medication = Medication.objects.get(id=medication_id)
+    medication.delete()
+    
+    medications = Medication.objects.all()
+    table_data = json.dumps([serialize_medication(med) for med in medications])
+    return render(request, "medications.html", {"active": "medications", "table_data": table_data})
+
 def add_new(request):
     reponse = protect_route(request, UserType.DOCTOR)
     if reponse: return reponse

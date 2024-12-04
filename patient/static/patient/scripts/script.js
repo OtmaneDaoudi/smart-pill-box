@@ -10,7 +10,7 @@ const reminderSelect = document.getElementById("timer")
 let notification_medications = document.getElementById("notification-medications")
 let notification_eventListener = null
 
-let NOTIFICATION_INTERVAL = 2000
+let NOTIFICATION_INTERVAL = 5000
 
 function show_modal()
 {

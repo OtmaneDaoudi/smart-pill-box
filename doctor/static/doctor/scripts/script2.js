@@ -13,7 +13,7 @@ function renderTable(data)
     // }
     
     new gridjs.Grid({
-        columns: ["ID", "Medication", "Period (Prescription)", "Period (Taken)"],
+        columns: ["ID", "Medication", "Period (Prescription)", "Period (Taken)", "Date"],
         data,
         sort: {
             multiColumn: false

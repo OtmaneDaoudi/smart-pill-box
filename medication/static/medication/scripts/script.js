@@ -9,7 +9,7 @@ function renderTable(data)
 {
     const actionsCol = {
         name: 'Actions',
-        formatter: (_, row) => gridjs.html(`<a class="delete action" href='/${row.cells[0].data}'>Delete</a>`)
+        formatter: (_, row) => gridjs.html(`<a class="delete action" href='/medication/medication/delete/${row.cells[0].data}'>Delete</a>`)
     }
     
     new gridjs.Grid({

@@ -27,7 +27,8 @@ def serilaize_intake(intake: Intake):
         intake.id,
         intake.prescription.medication.name,
         periods[intake.prescription.period],
-        periods[intake.period]
+        periods[intake.period],
+        intake.date.strftime("%Y-%m-%d")
     ]
 
 # Create your views here.
