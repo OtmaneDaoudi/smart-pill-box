@@ -8,7 +8,7 @@
 {% block content %}
   <script src="{% static 'doctor/scripts/script.js' %}"></script>
 
-  <button class="addBtn">Add new patient</button>
+  <!-- <button class="addBtn">Add new patient</button> -->
   <div id="wrapper"></div>
   <script>
     renderTable(JSON.parse( "{{ table_data | escapejs}}" ))
