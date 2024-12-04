@@ -12,7 +12,7 @@
     <div class="container">
         <h1>Login</h1>
         {% if error %}
-            <p>What a ... check yo gaddamn creds</p>
+            <p style="color: red;">Invalid password or username.</p>
         {% endif %}
         <form method="POST" action="{% url 'authentication:login' %}">
             {% csrf_token %}

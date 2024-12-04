@@ -8,7 +8,7 @@ function renderTable(data)
             <span>
                 <a class="delete action" href='/${row.cells[0].data}'>Delete</a>
                 <a href="/medication/prescription/${row.cells[0].data}" class="action green ">Prescription</a>
-                <a href="" class="action blue">Logs</a>
+                <a href="/doctor/alerts/${row.cells[0].data}" class="action blue">Alerts</a>
             </span>`)
     }
     
